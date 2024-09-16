@@ -1,10 +1,10 @@
 from item import Item
 
 class Raid:
-    def __init__(self, name, stamina, posible_items):
+    def __init__(self, name, stamina, items_default_drop_rate):
         self._name = name
         self._stamina = stamina
-        self._posible_items = posible_items
+        self._items_default_drop_rate = items_default_drop_rate
 
         self._visit_times = 0
         self._items_droped = {}
@@ -19,15 +19,18 @@ class Raid:
                 self._items_droped[item] = amount
 
     def calc_avg_outcome(tries):
-        pass
+        if self._visit_times > 10:
+            pass
+        else:
+            pass
 
 
 if __name__ == '__main__':
-    raid = Raid("Exp", 36, (
-                            Item("hero", "common"),
-                            Item("hero", "magic"),
-                            Item("hero", "rare"),
-                            Item("gold"),
-                            Item("exp")))
+    raid = Raid("Exp", 36, {
+                            Item("hero", "common"): 0.01,
+                            Item("hero", "magic"): 0.01,
+                            Item("hero", "rare"): 0.01,
+                            Item("gold"): 0.01,
+                            Item("exp"): 0.01})
 
     raid.add_stat(16, {Item("hero", "rare"): 1, Item("hero", "magic"): 11, Item("hero", "common"): 7, Item("gold"): 12000})
